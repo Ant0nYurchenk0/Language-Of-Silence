@@ -1,0 +1,43 @@
+ScreenManager:
+    MenuScreen:
+    DictionaryScreen:
+    DetectScreen:
+
+
+<MenuScreen>:
+    name: "menu"
+    MDToolbar:
+        title: "Language of Silence"
+        pos_hint: {"top": 1}
+    Image:
+        source: "logo.png"
+        pos_hint: {"center_x": 0.5, "center_y" : 0.7}
+    MDFillRoundFlatButton:
+        text: "Detect!"
+        font_size: 20
+        size_hint: (0.2, 0.07)
+        pos_hint: {"center_x":0.5, "center_y":0.4}
+        on_press: root.go_to_detect()
+    MDFillRoundFlatButton:
+        text: "Dictionary"
+        font_size: 20
+        size_hint: (0.2, 0.07)
+        pos_hint: {"center_x":0.5, "center_y":0.3}
+        on_press: root.go_to_dict()
+    MDFillRoundFlatButton:
+        text: "Exit"
+        font_size: 20
+        size_hint: (0.2, 0.07)
+        pos_hint: {"center_x":0.5, "center_y":0.2}
+        on_press: root.exit()
+<DictionaryScreen>:
+    name: "dictionary"
+    on_enter: root.build_list()
+    MDToolbar:
+        title: "Dictionary"
+        pos_hint: {"top": 1}
+        right_action_items: [["keyboard-backspace", lambda x: root.go_to_menu()]]
+<DetectScreen>:
+    name: "detect"
+    on_enter: root.detect()
+    
